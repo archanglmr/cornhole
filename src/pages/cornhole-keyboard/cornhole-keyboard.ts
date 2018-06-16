@@ -30,6 +30,6 @@ export class CornholeKeyboardPage {
   }
 
   protected handleClick(value: number) {
-    this.viewCtrl.dismiss(value);
+    this.viewCtrl.dismiss(value, null, {animate: false});
   }
 }
