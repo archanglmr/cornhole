@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Round } from '../../models/round';
+import { Score } from '../../models/score';
 
 @Component({
   selector: 'page-home',
@@ -56,17 +58,4 @@ export class HomePage {
     this.history = [];
     this.gameOver = false;
   }
-}
-
-class Round {
-  constructor(
-    public team1: Score,
-    public team2: Score
-  ) {}
-}
-
-class Score {
-  public bust: boolean = false;
-  public points: number = 0;
-  constructor(public total: number) {}
 }
