@@ -3,8 +3,8 @@
     <!-- <ion-buttons start></ion-buttons> -->
     <ion-title>Cornhole</ion-title>
     <ion-buttons end>
-      <button *ngIf="history.length && !gameOver" ion-button (tap)="handleUndo()">Undo</button>
-      <button *ngIf="gameOver" ion-button (tap)="handleReplay()">Play Again</button>
+      <button *ngIf="history.length" ion-button (tap)="handleUndo()">Undo</button>
+
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -36,7 +36,14 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-grid>
+    <ion-grid *ngIf="gameOver">
+      <ion-row>
+        <ion-col col-12 text-center>
+          <button ion-button (tap)="handleReplay()" [color]="team1Winner ? 'blue-team' : 'red-team'">{{team1Winner ? 'Blue' : 'Red'}} Team Wins, Play Again?</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="!gameOver">
       <ion-row>
         <ion-col col-6 text-center>
           <button ion-button (click)="promptForPoints(1)" color="blue-team">Add to Blue</button>

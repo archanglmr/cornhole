@@ -38,6 +38,7 @@ export class HomePage {
   protected handleUndo() {
     if (this.history.length) {
       this.history.pop();
+      this.gameOver = false;
     }
   }
 
@@ -85,7 +86,6 @@ export class HomePage {
       this.gameOver = true;
     }
   }
-
 
   protected reset() {
     this.history = [];
