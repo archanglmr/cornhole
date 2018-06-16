@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { Round } from '../../models/round';
 import { Score } from '../../models/score';
+import { CornholeKeyboardPage } from '../cornhole-keyboard/cornhole-keyboard';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -27,24 +30,49 @@ export class HomePage {
     return this.gameOver ? this.team2Score === this.targetScore : false;
   }
 
-  constructor() {
-    let interval = setInterval(() => {
-      let points = Math.round((Math.random() * 6));
-      let team1: Score = new Score(this.team1Score);
-      let team2: Score = new Score(this.team2Score);
+  constructor(
+    protected navCtrl: NavController,
+    protected modalCtrl: ModalController
+  ) {}
 
-      if (Math.round(Math.random())) {
-        this.addPoints(team1, points);
-      } else {
-        this.addPoints(team2, points);
+  protected handleUndo() {
+    if (this.history.length) {
+      this.history.pop();
+    }
+  }
+
+  protected handleReplay() {
+    if (this.gameOver) {
+      this.reset();
+    }
+  }
+
+  protected promptForPoints(team: number) {
+    let modal = this.modalCtrl.create(
+      CornholeKeyboardPage,
+      (1 === team ?
+        {title: 'Blue Team', buttonColor: 'blue-team'}:
+        {title: 'Red Team', buttonColor: 'red-team'}
+      )
+    );
+    modal.onDidDismiss((points) => {
+      if (points) {
+        let team1: Score = new Score(this.team1Score);
+        let team2: Score = new Score(this.team2Score);
+
+        switch(team) {
+          case 1:
+            this.addPoints(team1, points);
+            break;
+          case 2:
+            this.addPoints(team2, points);
+            break;
+        }
+        this.history.push(new Round(team1, team2));
       }
-
-      if (this.gameOver) {
-        clearInterval(interval);
-      }
-
-      this.history.push(new Round(team1, team2));
-    }, 250);
+      modal = undefined;
+    });
+    modal.present();
   }
 
   private addPoints(team: Score, points: number) {

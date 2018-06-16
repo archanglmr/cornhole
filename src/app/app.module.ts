@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { CornholeKeyboardPage } from '../pages/cornhole-keyboard/cornhole-keyboard';
+import { CornholeKeyboardPageModule } from '../pages/cornhole-keyboard/cornhole-keyboard.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -14,12 +17,15 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    CornholeKeyboardPageModule,
+    IonicModule.forRoot(MyApp),
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CornholeKeyboardPage
   ],
   providers: [
     StatusBar,
