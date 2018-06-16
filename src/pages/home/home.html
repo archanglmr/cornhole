@@ -10,25 +10,46 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row class="header">
+  <ion-grid class="header">
+    <ion-row>
       <ion-col col-6 text-center>
-        <ion-title color="blue-team">Blue Team - {{team1Score}}</ion-title>
+        <ion-title>Blue Team</ion-title>
       </ion-col>
       <ion-col col-6 text-center>
-        <ion-title color="red-team">Red Team - {{team2Score}}</ion-title>
+        <ion-title>Red Team</ion-title>
       </ion-col>
     </ion-row>
+  </ion-grid>
+
+  <ion-grid class="totals">
+    <ion-row>
+      <ion-col col-6 text-center>
+        <ion-title color="blue-team">{{team1Score}} / {{targetScore}}</ion-title>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <ion-title color="red-team">{{team2Score}} / {{targetScore}}</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="history">
     <ion-row *ngFor="let round of history">
-      <ion-col col-6 text-center>{{round.team1 | formatScore}}</ion-col>
-      <ion-col col-6 text-center>{{round.team2 | formatScore}}</ion-col>
-    </ion-row>
-    <ion-row *ngIf="gameOver">
       <ion-col col-6 text-center>
-        {{team1Winner ? 'WINNER' : 'LOSER'}}
+        {{round.team1 | formatScore}}
       </ion-col>
       <ion-col col-6 text-center>
-        {{team2Winner ? 'WINNER' : 'LOSER'}}
+        {{round.team2 | formatScore}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="gameOver" *ngIf="gameOver">
+    <ion-row>
+      <ion-col col-6 text-center>
+        <strong>{{team1Winner ? 'WINNER' : 'LOSER'}}</strong>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <strong>{{team2Winner ? 'WINNER' : 'LOSER'}}</strong>
       </ion-col>
     </ion-row>
   </ion-grid>

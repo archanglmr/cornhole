@@ -1,5 +1,19 @@
 page-home {
-  ion-row.header ion-title {
-    text-decoration: underline;
+  ion-grid.header {
+    padding-bottom: 0;
+  }
+  ion-grid.totals {
+    border-bottom: 2px solid color($colors, light);
+  }
+  ion-grid.history ion-row ion-col {
+    &:first-child {
+      border-right: 1px solid color($colors, light);
+    }
+    &:last-child {
+      border-left: 1px solid color($colors, light);
+    }
+  }
+  ion-grid.gameOver {
+    border-top: 2px solid color($colors, light);
   }
 }

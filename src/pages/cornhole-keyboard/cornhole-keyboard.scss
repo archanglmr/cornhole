@@ -1,0 +1,13 @@
+ion-modal.keyboard ion-backdrop {
+  visibility: visible;
+  background-color: white;
+  opacity: .6 !important;
+}
+ion-modal.keyboard .modal-wrapper {
+  height: 245px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  // background-color: rgba(0, 0, 0, .75);
+  background-color: white;
+}

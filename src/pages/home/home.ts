@@ -54,7 +54,10 @@ export class HomePage {
       (1 === team ?
         {title: 'Blue Team', buttonColor: 'blue-team'}:
         {title: 'Red Team', buttonColor: 'red-team'}
-      )
+      ),
+      {
+        cssClass: 'keyboard'
+      }
     );
     modal.onDidDismiss((points) => {
       if (points) {
