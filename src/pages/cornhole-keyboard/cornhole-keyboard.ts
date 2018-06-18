@@ -26,7 +26,7 @@ export class CornholeKeyboardPage {
   }
 
   protected handleClose() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(null, null, {animate: false});
   }
 
   protected handleClick(value: number) {

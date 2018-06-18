@@ -1,16 +1,27 @@
 page-home {
   ion-grid.header {
     padding-bottom: 0;
-  }
-  ion-grid.totals {
-    border-bottom: 2px solid color($colors, light);
-  }
-  ion-grid.history ion-row ion-col {
-    &:first-child {
-      border-right: 1px solid color($colors, light);
+    h2 { margin: 0 0 8px 0; }
+    h3 {
+      font-size: 2.4rem;
+      margin: 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid color($colors, light);
+      span { font-size: 1.4rem; }
     }
-    &:last-child {
-      border-left: 1px solid color($colors, light);
+    .blue-team h2 {
+      color: color($colors, blue-team) !important;
+    }
+    .red-team h2 {
+      color: color($colors, red-team) !important;
+    }
+  }
+  ion-grid.totals {}
+  ion-grid.history {
+    font-size: 1.8rem;
+    ion-row ion-col {
+      &:first-child { border-right: 1px solid color($colors, light); }
+      &:last-child { border-left: 1px solid color($colors, light); }
     }
   }
   ion-grid.gameOver {

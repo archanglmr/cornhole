@@ -2,7 +2,7 @@
   <ion-toolbar [color]="buttonColor">
     <ion-title text-center>{{title}}</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (tap)="handleClose()">
+      <button ion-button icon-only (click)="handleClose()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -10,7 +10,7 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let value of keys" col-3 text-center>
-        <button ion-button block (tap)="handleClick(value)" [color]="buttonColor">+{{value}}</button>
+        <button ion-button block (click)="handleClick(value)" [color]="buttonColor">+{{value}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>

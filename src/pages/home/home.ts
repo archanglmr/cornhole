@@ -76,7 +76,7 @@ export class HomePage {
       }
       modal = undefined;
     });
-    modal.present();
+    modal.present({animate: false});
   }
 
   private addPoints(team: Score, points: number) {
