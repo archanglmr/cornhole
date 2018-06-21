@@ -1,11 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <!-- <ion-buttons start></ion-buttons> -->
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Cornhole</ion-title>
     <ion-buttons end>
       <button *ngIf="history.length" ion-button (tap)="handleUndo()">Undo</button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
