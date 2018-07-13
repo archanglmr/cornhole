@@ -59,10 +59,10 @@
     <ion-grid *ngIf="!gameOver">
       <ion-row>
         <ion-col col-6 text-center>
-          <button ion-button (click)="promptForPoints(1)" color="blue-team">Add to Blue</button>
+          <button ion-button (tap)="promptForPoints(1)" color="blue-team">Add to Blue</button>
         </ion-col>
         <ion-col col-6 text-center>
-          <button ion-button (click)="promptForPoints(2)" color="red-team">Add to Red</button>
+          <button ion-button (tap)="promptForPoints(2)" color="red-team">Add to Red</button>
         </ion-col>
       </ion-row>
     </ion-grid>

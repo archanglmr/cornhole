@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { CornholeKeyboardPage } from '../pages/cornhole-keyboard/cornhole-keyboard';
 import { CornholeKeyboardPageModule } from '../pages/cornhole-keyboard/cornhole-keyboard.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PipesModule } from '../pipes/pipes.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SettingsProvider
   ]
 })
 export class AppModule {}

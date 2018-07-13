@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController, Events } from 'ionic-angular';
 import { Round } from '../../models/round';
 import { Score } from '../../models/score';
 import { CornholeKeyboardPage } from '../cornhole-keyboard/cornhole-keyboard';
+import { SettingsProvider } from '../../providers/settings/settings';
 
 @IonicPage()
 @Component({
@@ -16,24 +17,19 @@ export class HomePage {
   protected targetScore = 21;
   protected bustScore = 17;
 
-  protected get team1Score(): number {
-    return this.history.length ? this.history[this.history.length - 1].team1.total : 0;
-  }
-  protected get team2Score(): number {
-    return this.history.length ? this.history[this.history.length - 1].team2.total : 0;
-  }
+  protected get team1Score(): number { return this.history.length ? this.history[this.history.length - 1].team1.total : 0; }
+  protected get team2Score(): number { return this.history.length ? this.history[this.history.length - 1].team2.total : 0; }
 
-  protected get team1Winner(): boolean {
-    return this.gameOver ? this.team1Score === this.targetScore : false;
-  }
-  protected get team2Winner(): boolean {
-    return this.gameOver ? this.team2Score === this.targetScore : false;
-  }
+  protected get team1Winner(): boolean { return this.gameOver ? this.team1Score === this.targetScore : false; }
+  protected get team2Winner(): boolean { return this.gameOver ? this.team2Score === this.targetScore : false; }
 
   constructor(
-    protected navCtrl: NavController,
-    protected modalCtrl: ModalController
-  ) {}
+    protected events: Events,
+    protected modalCtrl: ModalController,
+    protected settings: SettingsProvider
+  ) {
+    this.events.subscribe('New Game', () => this.reset());
+  }
 
   protected handleUndo() {
     if (this.history.length) {
@@ -93,5 +89,7 @@ export class HomePage {
   protected reset() {
     this.history = [];
     this.gameOver = false;
+    this.targetScore = this.settings.targetScore;
+    this.bustScore = this.settings.bustScore;
   }
 }

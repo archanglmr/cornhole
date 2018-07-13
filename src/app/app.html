@@ -1,34 +1,32 @@
 <ion-menu [content]="content" type="reveal">
   <ion-header>
     <ion-navbar color="primary">
-      <!-- <ion-toolbar> -->
-        <ion-title>Menu</ion-title>
-      <!-- </ion-toolbar> -->
+      <ion-title>Menu</ion-title>
     </ion-navbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-list-header>Information</ion-list-header>
-      <ion-item>How to Play</ion-item>
-
-      <ion-list-header>Settings</ion-list-header>
-      <form [formGroup]="settings">
+      <ion-list-header>Game Settings</ion-list-header>
+      <form [formGroup]="settingsForm">
         <ion-item>
           <ion-label>Target Score</ion-label>
           <ion-select formControlName="targetScore">
-            <ion-option *ngFor="let number of targetScores" value="{{number}}">{{number}}{{21 === number ? ' (default)' : ''}}</ion-option>
+            <ion-option *ngFor="let number of targetScoreValues" value="{{number}}">{{number}}{{settings.defaultTarget === number ? ' (default)' : ''}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Bust Score</ion-label>
           <ion-select formControlName="bustScore">
-            <ion-option *ngFor="let number of bustScores" value="{{number}}">{{number}}{{17 === number ? ' (default)' : ''}}</ion-option>
+            <ion-option *ngFor="let number of bustScoreValues" value="{{number}}">{{number}}{{settings.defaultBust === number ? ' (default)' : ''}}</ion-option>
           </ion-select>
+        </ion-item>
+        <ion-item text-center>
+          <button (tap)="newGame()" ion-button>Start New Game</button>
         </ion-item>
       </form>
 
       <ion-list-header>Others</ion-list-header>
-      <ion-item>New Game</ion-item>
+      <!-- <ion-item>How to Play</ion-item> -->
       <ion-item menuClose detail-none>Close</ion-item>
     </ion-list>
   </ion-content>
