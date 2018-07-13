@@ -6,15 +6,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsProvider } from '../providers/settings/settings';
-import { Page } from '../../node_modules/ionic-angular/umd/navigation/nav-util';
-import { Menu } from '../../node_modules/ionic-angular/umd/components/app/menu-interface';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  private rootPage: Page = HomePage;
-  private menu: Menu;
+  private rootPage: any = HomePage;
 
   private settingsForm: FormGroup;
   private targetScoreValues: number[] = [];
