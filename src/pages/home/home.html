@@ -8,9 +8,7 @@
       <button *ngIf="history.length" ion-button (click)="handleUndo()">Undo</button>
     </ion-buttons>
   </ion-navbar>
-</ion-header>
 
-<ion-content>
   <ion-grid class="header">
     <ion-row>
       <ion-col class="blue-team" col-6 text-center>
@@ -23,6 +21,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+</ion-header>
+
+<ion-content>
 
   <ion-grid class="history">
     <ion-row *ngFor="let round of history">

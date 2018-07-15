@@ -1,4 +1,7 @@
 page-home {
+  ion-navbar.toolbar {
+    border-bottom: $list-ios-header-border-bottom;
+  }
   ion-grid.header {
     padding-bottom: 0;
     h2 { margin: 0 0 8px 0; }
@@ -16,7 +19,6 @@ page-home {
       color: color($colors, red-team) !important;
     }
   }
-  ion-grid.totals {}
   ion-grid.history {
     font-size: 1.8rem;
     ion-row ion-col {
