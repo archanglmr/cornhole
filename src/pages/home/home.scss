@@ -29,4 +29,34 @@ page-home {
   ion-grid.gameOver {
     border-top: 2px solid color($colors, light);
   }
+
+  div.portrait_mode {
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000;
+
+    h2 {
+      font-size: 15vh;
+      line-height: 15vh;
+      margin-bottom: 1vh;
+    }
+    h3 {
+      font-size: 70vh;
+      line-height: 70vh;
+    }
+    .blue-team {
+      h2, h3 {
+        color: color($colors, blue-team) !important;
+      }
+    }
+    .red-team {
+      h2, h3 {
+        color: color($colors, red-team) !important;
+      }
+    }
+  }
 }

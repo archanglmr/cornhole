@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { CornholeKeyboardPage } from '../pages/cornhole-keyboard/cornhole-keyboard';
 import { CornholeKeyboardPageModule } from '../pages/cornhole-keyboard/cornhole-keyboard.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SettingsProvider } from '../providers/settings/settings';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ScreenOrientation,
     SettingsProvider
   ]
 })

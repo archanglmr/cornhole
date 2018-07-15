@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, Events } from 'ionic-angular';
+import { IonicPage, ModalController, Events, Platform } from 'ionic-angular';
 import { Round } from '../../models/round';
 import { Score } from '../../models/score';
 import { CornholeKeyboardPage } from '../cornhole-keyboard/cornhole-keyboard';
 import { SettingsProvider } from '../../providers/settings/settings';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @IonicPage()
 @Component({
@@ -17,6 +18,8 @@ export class HomePage {
   protected targetScore = 21;
   protected bustScore = 17;
 
+  protected portrait: boolean = true;
+
   protected get team1Score(): number { return this.history.length ? this.history[this.history.length - 1].team1.total : 0; }
   protected get team2Score(): number { return this.history.length ? this.history[this.history.length - 1].team2.total : 0; }
 
@@ -24,11 +27,24 @@ export class HomePage {
   protected get team2Winner(): boolean { return this.gameOver ? this.team2Score === this.targetScore : false; }
 
   constructor(
-    protected events: Events,
-    protected modalCtrl: ModalController,
-    protected settings: SettingsProvider
-  ) {
+    private platform: Platform,
+    private events: Events,
+    private modalCtrl: ModalController,
+    protected settings: SettingsProvider,
+    private screenOrientation: ScreenOrientation,
+  ) { }
+
+  protected ionViewDidLoad(): void {
     this.events.subscribe('New Game', () => this.reset());
+
+    this.platform.ready().then(() => {
+      // monitor orientation
+      this.portrait = this.isPortrait();
+
+      this.screenOrientation.onChange().subscribe(() => {
+        this.portrait = this.isPortrait();
+      });
+    });
   }
 
   protected handleUndo() {
@@ -91,5 +107,10 @@ export class HomePage {
     this.gameOver = false;
     this.targetScore = this.settings.targetScore;
     this.bustScore = this.settings.bustScore;
+  }
+
+  private isPortrait(): boolean {
+    const keyword = 'portrait';
+    return keyword === this.screenOrientation.type.substr(0, keyword.length).toLowerCase();
   }
 }
