@@ -9,14 +9,14 @@
       <ion-list-header>Game Settings</ion-list-header>
       <form [formGroup]="settingsForm">
         <ion-item>
-          <ion-label>Target Score</ion-label>
-          <ion-select formControlName="targetScore">
+          <ion-label>Win Score</ion-label>
+          <ion-select formControlName="targetScore" [selectOptions]="{subTitle:'Exact score needed to win.'}">
             <ion-option *ngFor="let number of targetScoreValues" value="{{number}}">{{number}}{{settings.defaultTarget === number ? ' (default)' : ''}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Bust Score</ion-label>
-          <ion-select formControlName="bustScore">
+          <ion-select formControlName="bustScore" [selectOptions]="{subTitle:'Reset to this score when exceeding the win score.'}">
             <ion-option *ngFor="let number of bustScoreValues" value="{{number}}">{{number}}{{settings.defaultBust === number ? ' (default)' : ''}}</ion-option>
           </ion-select>
         </ion-item>
