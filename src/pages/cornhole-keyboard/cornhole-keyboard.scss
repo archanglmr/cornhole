@@ -10,3 +10,7 @@ ion-modal.keyboard .modal-wrapper {
   bottom: 0;
   background-color: white;
 }
+
+.cornhole-keyboard-button {
+  .button-inner { flex-flow: column; }
+}
