@@ -110,7 +110,10 @@ export class HomePage {
   }
 
   private isPortrait(): boolean {
+    if (!this.screenOrientation.type) {
+      return true;
+    }
     const keyword = 'portrait';
-    return keyword === this.screenOrientation.type.substr(0, keyword.length).toLowerCase();
+    return keyword === ('' || this.screenOrientation.type).substr(0, keyword.length).toLowerCase();
   }
 }
